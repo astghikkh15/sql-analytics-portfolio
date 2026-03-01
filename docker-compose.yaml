@@ -1,7 +1,7 @@
 services:
   db:
     container_name: postgresql_db_aca
-    image: postgres:17
+    image: postgis/postgis:17-3.4
     restart: always
     env_file: .env
     environment:
@@ -36,5 +36,6 @@ services:
     volumes:
       - ./pgadmin_data:/var/lib/pgadmin
       - ./queries:/var/lib/pgadmin/storage/admin_admin.com/queries
+      - ./data/analytics_schema:/data:ro
     depends_on:
       - db
